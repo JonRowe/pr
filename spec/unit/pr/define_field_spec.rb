@@ -17,4 +17,8 @@ describe 'defining a field on a form' do
     form.name = new_raw_value
     expect(form.name).to eq new_raw_value
   end
+  it 'defines a reader to return the actual field' do
+    define_field.on form_klass, :name, field
+    expect(form.__name).to be_a field
+  end
 end
