@@ -1,9 +1,9 @@
 # -*- encoding: utf-8 -*-
 $:.push File.expand_path("../lib", __FILE__)
-require "PR/version"
+require "pr/version"
 
 Gem::Specification.new do |s|
-  s.name        = "PR"
+  s.name        = "pr"
   s.version     = PR::VERSION
   s.authors     = ["Jon Rowe"]
   s.email       = ["hello@jonrowe.co.uk"]
