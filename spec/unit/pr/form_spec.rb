@@ -3,7 +3,7 @@ require 'pr/form'
 describe 'the PR Form' do
   let(:form_klass) do
     Class.new do
-      include Form
+      include PR::Form
     end
   end
 
