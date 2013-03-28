@@ -33,4 +33,4 @@ rescue LoadError
   end
 end
 
-task :default => %w[unit integrations]
+task default: %w[unit integrations]
