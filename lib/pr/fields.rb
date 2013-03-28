@@ -1,0 +1,6 @@
+require 'pr/fields/invalid_value'
+require 'pr/fields/generic_field'
+require 'pr/fields/string_field'
+require 'pr/fields/boolean_field'
+require 'pr/fields/date_field'
+require 'pr/fields/float_field'
