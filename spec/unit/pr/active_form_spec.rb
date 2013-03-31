@@ -34,6 +34,7 @@ describe 'the PR Form' do
       end
 
       its(:to_model) { should eq form }
+      its(:to_partial_path) { should eq 'testforms/testform' }
 
       describe 'when not persisted' do
 

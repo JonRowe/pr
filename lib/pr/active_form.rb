@@ -17,6 +17,11 @@ module PR
       end
     end
 
+    def to_partial_path
+      name = self.class.model_name.downcase
+      [name.pluralize,name].join '/'
+    end
+
     def to_model
       self
     end
