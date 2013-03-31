@@ -1,4 +1,4 @@
-require "PR/version"
+require "pr/version"
 
 module PR
 end
