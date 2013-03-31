@@ -19,18 +19,21 @@ begin
     task.pattern = 'spec/unit/**/*_spec.rb'
   end
 
-  desc "Run integration specs"
-  RSpec::Core::RakeTask.new :integrations do |task|
-    task.pattern = 'spec/scenarios/**/*_spec.rb'
+  require 'cucumber'
+  require 'cucumber/rake/task'
+
+  desc "Run features"
+  Cucumber::Rake::Task.new(:features) do |t|
+    t.cucumber_opts = "features --format pretty"
   end
 
 rescue LoadError
-  %W[unit integrations].each do |task_name|
+  %W[unit features].each do |task_name|
     task task_name do
-      warn "No RSpec"
+      warn "Tests unavaiable without RSpec/Cucumber"
       fail
     end
   end
 end
 
-task default: %w[unit integrations]
+task default: %w[unit features]
