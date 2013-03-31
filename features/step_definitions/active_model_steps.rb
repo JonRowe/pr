@@ -19,7 +19,7 @@ class TestActiveModelCompliance < Test::Unit::TestCase
 
 end
 TEST
-  run_simple unescape 'ruby -Itest test_active_model_compliance.rb'
+  run_simple 'ruby -Itest test_active_model_compliance.rb', true, 5
 end
 
 Then "it should pass" do
