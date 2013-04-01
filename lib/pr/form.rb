@@ -7,7 +7,7 @@ module PR
 
     module DSL
       def field name, type, options = {}
-        DefineAndRegister[ self, name, type, options ]
+        PR::DefineAndRegister[ self, name, type, options ]
       end
     end
 
