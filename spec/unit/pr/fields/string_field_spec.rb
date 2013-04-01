@@ -1,15 +1,23 @@
 require 'pr/fields/string_field'
 
 describe 'a string field' do
-  let(:klass) { PR::Fields::StringField }
-  let(:value) { double "value" }
-  let(:field) { klass.new value }
+  let(:klass)   { PR::Fields::StringField }
+  let(:value)   { double "value" }
+  let(:options) { Hash.new }
+  let(:field)   { klass.new value, options }
 
   describe "default value" do
     subject { klass.new }
 
     its(:raw)     { should == '' }
     its(:convert) { should == '' }
+    its(:options) { should == {} }
+  end
+
+  describe '#options' do
+    it 'has retrievable options' do
+      expect(field.options).to eq options
+    end
   end
 
   describe "#populate" do

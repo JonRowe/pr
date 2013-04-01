@@ -4,9 +4,10 @@ module PR
       TrueValues  = [1,"1","true",true]
       FalseValues = [0,"0","false",false, ""]
 
-      def initialize value = nil
-        @value = value
+      def initialize value = nil, options = {}
+        @value, @options = value, options
       end
+      attr_reader :options
 
       def populate value
         @value = value

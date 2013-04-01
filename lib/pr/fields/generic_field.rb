@@ -2,9 +2,10 @@ module PR
   module Fields
     class GenericField
 
-      def initialize value = nil
-        @value = value
+      def initialize value = nil, options = {}
+        @value, @options = value, options
       end
+      attr_reader :options
 
       def raw
         @value

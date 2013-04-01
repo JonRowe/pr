@@ -2,9 +2,10 @@ module PR
   module Fields
     class FloatField
 
-      def initialize value = ''
-        @value = value
+      def initialize value = '', options = {}
+        @value, @options = value, options
       end
+      attr_reader :options
 
       def raw
         @value
