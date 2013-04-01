@@ -16,5 +16,4 @@ Feature: Active Model compatibility
       """Ruby
         MyForm.new
       """
-
     Then it should pass
