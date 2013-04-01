@@ -12,13 +12,22 @@ describe 'defining a field on a form' do
     define_field.on form_klass, :name, field
     expect(form.name).to eq field.new.raw
   end
+
   it 'defines a writer which will set the field value' do
     define_field.on form_klass, :name, field
     form.name = new_raw_value
     expect(form.name).to eq new_raw_value
   end
+
   it 'defines a reader to return the actual field' do
     define_field.on form_klass, :name, field
     expect(form.__name).to be_a field
   end
+
+  it 'takes options and passes them to field' do
+    options = Hash.new
+    define_field.on form_klass, :name, field, options
+    expect(form.__name.options).to eq options
+  end
+
 end
