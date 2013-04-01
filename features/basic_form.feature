@@ -17,3 +17,20 @@ Feature: Defining a basic form
     When I initialise MyForm
     Then my form should have a string input "event_name"
     And my form should have a date input "start_date"
+
+
+  @form
+  Scenario: Form (with macros)
+    Given I have a form defined as:
+      """Ruby
+        class MyForm
+          include PR::Form
+
+          field :event_name, :string
+          field :start_date, :date
+
+        end
+      """
+    When I initialise MyForm
+    Then my form should have a string input "event_name"
+    And my form should have a date input "start_date"
