@@ -1,4 +1,12 @@
 class DefineField
+  class << self
+    def on klass, field_name, field
+      new.on klass, field_name, field
+    end
+    def [] klass, field_name, field
+      new.on klass, field_name, field
+    end
+  end
 
   def on klass, field_name, field
     var_name     = "@field_#{field_name}"
