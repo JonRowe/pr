@@ -6,8 +6,8 @@ module PR
     end
 
     module DSL
-      def field name, options = {}
-        DefineAndRegister[ self, name, options ]
+      def field name, type, options = {}
+        DefineAndRegister[ self, name, type, options ]
       end
     end
 
