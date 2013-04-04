@@ -29,7 +29,7 @@ Feature: Building a model from a form
     When I build my model from the form:
       """Ruby
         @model = Event.new
-        PR::BuildModel[@model,@form]
+        PR::BuildModel[ @form, @model ]
       """
     Then my model should have a string for event_name "Event"
     And my model should have a date for start_date `Date.civil(2013,3,31)`
