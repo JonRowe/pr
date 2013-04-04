@@ -2,20 +2,16 @@ require 'pr/build_model'
 
 describe 'building a model from a form' do
   let(:model)    { Struct.new(:a,:b).new }
-  let(:registry) { double }
+  let(:registry) { double fields: [:a,:b] }
 
-  let(:field_a)  { double "field", convert: "a_value" }
-  let(:field_b)  { double "field", convert: "b_value" }
-  let(:form)     { double "form", __a: field_a, __b: field_b }
+  let(:field_a)    { double "field", convert: "a_value" }
+  let(:field_b)    { double "field", convert: "b_value" }
+  let(:form)       { double "form", __a: field_a, __b: field_b }
 
-  let(:builder)  { BuildModel.new registry }
+  let(:builder)  { PR::BuildModel.new registry }
 
-  before do
-    registry.stub(:fields_for).and_yield(:a).and_yield(:b)
-  end
-
-  it 'fetches fields from the registry' do
-    registry.should_receive(:fields_for).with(form)
+  it 'gets the fields' do
+    registry.should_receive(:fields)
     builder.for form, model
   end
   it 'converts fields to values' do
