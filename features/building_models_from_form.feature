@@ -32,4 +32,4 @@ Feature: Building a model from a form
         BuildModel[@model,@form]
       """
     Then my model should have a string for event_name "Event"
-    And  my model should have a date for start_date `Date.civil(2013,3,31)`
+    And my model should have a date for start_date `Date.civil(2013,3,31)`
