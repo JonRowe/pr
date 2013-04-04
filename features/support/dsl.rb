@@ -8,16 +8,22 @@ module DSL
     end
   end
 
-  def define_form code
+  def run_test code
     world.run code
   end
+  alias define_form  run_test
+  alias define_model run_test
 
   def fetch klass
     world.class.const_get klass
   end
 
+  def access var
+    world.instance_variable_get var
+  end
+
   def world
-    @world || World.new
+    @world ||= World.new
   end
 
   def set thing, attribute, value
