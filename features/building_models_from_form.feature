@@ -33,3 +33,34 @@ Feature: Building a model from a form
       """
     Then my model should have a string for event_name "Event"
     And my model should have a date for start_date `Date.civil(2013,3,31)`
+
+
+  @form @macro @build
+  Scenario: Basic Form using macro
+    Given I have a form defined as:
+      """Ruby
+        class MyForm
+          include PR::Form
+
+          field :event_name, :string
+          field :start_date, :date
+
+        end
+      """
+    And I have preloaded the form with data:
+      """Ruby
+        @form = MyForm.new
+        @form.event_name = 'Event'
+        @form.start_date = '31/03/2013'
+      """
+    And I have a model defined as:
+      """Ruby
+        class AnEvent < Struct.new(:event_name,:start_date)
+        end
+      """
+    When I build my model from the form:
+      """Ruby
+        @form.build_model (@model = AnEvent.new)
+      """
+    Then my model should have a string for event_name "Event"
+    And my model should have a date for start_date `Date.civil(2013,3,31)`

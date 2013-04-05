@@ -8,6 +8,7 @@ module DSL
     end
   end
 
+
   def run_test code
     world.run code
   end
@@ -23,7 +24,7 @@ module DSL
   end
 
   def world
-    @world ||= World.new
+    @world ||= Class.new(World).new
   end
 
   def set thing, attribute, value
