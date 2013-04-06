@@ -11,6 +11,7 @@ require 'pr/define_field'
 require 'pr/define_and_register'
 
 require 'pr/build_model'
+require 'pr/build_from_hash'
 
 require 'pr/form'
 require 'pr/active_form' if defined?(Rails)
