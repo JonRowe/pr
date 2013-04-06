@@ -15,6 +15,10 @@ module DSL
   alias define_form  run_test
   alias define_model run_test
 
+  def define_hash code
+    world.instance_variable_set '@hash', world.run(code)
+  end
+
   def fetch klass
     world.class.const_get klass
   end
