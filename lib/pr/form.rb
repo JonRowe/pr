@@ -10,6 +10,11 @@ module PR
       def field name, type, options = {}
         PR::DefineAndRegister[ self, name, type, options ]
       end
+      def from_hash hash
+        form = new
+        PR::BuildFromHash[ form, hash ]
+        form
+      end
     end
 
     module Macros

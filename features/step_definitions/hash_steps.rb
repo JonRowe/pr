@@ -2,6 +2,10 @@ Given "I have a hash:" do |code|
   define_hash code
 end
 
+Given "I build my form using the macro:" do |code|
+  run_test code
+end
+
 When "I build my form from the hash:" do |code|
   run_test code
 end

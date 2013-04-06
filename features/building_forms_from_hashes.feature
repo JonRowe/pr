@@ -29,3 +29,29 @@ Feature: Building a form from a hash
       """
     Then my form should have a event_name of "Mien Event"
     Then my form should have a start_date of "31/03/2013"
+
+  @form @macro @hash
+  Scenario: Basic Form built using macro
+    Given I have a form defined as:
+      """Ruby
+        class MyForm
+          include PR::Form
+
+          field :event_name, :string
+          field :start_date, :date
+
+        end
+      """
+    And I have a hash:
+      """Ruby
+        {
+          "event_name" => "Mien Event",
+          "start_date" => "31/03/2013"
+        }
+      """
+      When I build my form using the macro:
+      """Ruby
+        @form = MyForm.from_hash @hash
+      """
+    Then my form should have a event_name of "Mien Event"
+    Then my form should have a start_date of "31/03/2013"
