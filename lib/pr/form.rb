@@ -15,6 +15,9 @@ module PR
         PR::BuildFromHash[ form, hash ]
         form
       end
+      def from_model model
+        PR::BuildFromModel[ self, model ]
+      end
     end
 
     module Macros
