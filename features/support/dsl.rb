@@ -12,6 +12,7 @@ module DSL
   def run_test code
     world.run code
   end
+  alias define_field run_test
   alias define_form  run_test
   alias define_model run_test
 
