@@ -10,8 +10,8 @@ module PR
       def field name, type, options = {}
         PR::DefineAndRegister[ self, name, type, options ]
       end
-      def from_hash hash
-        form = new
+      def from_hash hash, *args
+        form = new *args
         PR::BuildFromHash[ form, hash ]
         form
       end
