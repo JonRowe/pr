@@ -1,19 +1,17 @@
+require 'pr'
+
 module DSL
-
-  class World
-    require 'pr'
-
-    def run code
-      eval code
-    end
-  end
-
 
   def run_test code
     world.run code
   end
-  alias define_field run_test
-  alias define_form  run_test
+
+  def setup_test code
+    world.load code
+  end
+
+  alias define_field setup_test
+  alias define_form  setup_test
   alias define_model run_test
 
   def define_hash code
@@ -29,7 +27,19 @@ module DSL
   end
 
   def world
-    @world ||= Class.new(World).new
+    @world ||= world_klass.new
+  end
+
+  def world_klass
+    Class.new do
+      def load code
+        self.class.class_eval code
+      end
+
+      def run code
+        self.instance_eval code
+      end
+    end
   end
 
   def set thing, attribute, value
