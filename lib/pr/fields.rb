@@ -28,7 +28,7 @@ module PR
       end
 
       def __fields
-        @__fields ||= PreDefined.dup
+        PreDefined
       end
       private :__fields
 
