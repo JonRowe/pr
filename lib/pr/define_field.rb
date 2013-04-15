@@ -15,7 +15,7 @@ class DefineField
 
     define_field  klass, actual_field, var_name, field_setter
     define_reader klass, field_name, actual_field
-    define_setter klass, var_name, field_setter, field
+    define_setter klass, var_name, field_setter, field, options
   end
 
   private
@@ -39,10 +39,10 @@ class DefineField
       end
     end
 
-    def define_setter klass, var_name, field_setter, field
+    def define_setter klass, var_name, field_setter, field, options
       klass.class_eval do
         define_method(field_setter) do |value|
-          instance_variable_set var_name, field.new(*([value].compact))
+          instance_variable_set var_name, field.new(value,options)
         end
       end
     end
