@@ -7,6 +7,13 @@ rvm:
   - 2.0.0
   - 1.9.3
   - 1.9.2
-  - rbx-19mode
+  - 2.0.0
+  - 1.9.3
+  - 1.9.2
+
+  - rbx
   - jruby-19mode
-  - ruby-head
+
+matrix:
+  allow_failures:
+    - rvm: rbx
