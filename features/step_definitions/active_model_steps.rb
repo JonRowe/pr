@@ -7,10 +7,23 @@ When "I run the active model lint tests for" do |instance|
 module Rails
 end
 
-require 'test/unit'
+begin
+  # new hotness
+  require 'minitest/autorun'
+rescue LoadError
+  # old and busted then
+  require 'test/unit'
+end
 require '#{ File.expand_path "../../../" + dirs.join('/'), __FILE__ }/my_form'
 
-class TestActiveModelCompliance < Test::Unit::TestCase
+base_class =
+  if defined?(::Test)
+    Test::Unit::TestCase
+  else
+    MiniTest::Unit::TestCase
+  end
+
+class TestActiveModelCompliance < base_class
   include ActiveModel::Lint::Tests
 
   def model
