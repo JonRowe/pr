@@ -47,9 +47,9 @@ describe 'the PR Form' do
 
       describe 'when not persisted' do
 
-        specify { expect(subject.persisted?).to be_false }
-        specify { expect(subject.to_key).to be_nil }
-        specify { expect(subject.to_param).to be_nil }
+        specify { expect(subject.persisted?).to be false }
+        specify { expect(subject.to_key).to be nil }
+        specify { expect(subject.to_param).to be nil }
       end
 
       describe 'when persisted' do
@@ -57,7 +57,7 @@ describe 'the PR Form' do
           form.id = 100
         end
 
-        specify { expect(subject.persisted?).to be_true  }
+        specify { expect(subject.persisted?).to be true  }
         specify { expect(subject.to_key).to eq [:id] }
         specify { expect(subject.to_param).to eq "100" }
       end
