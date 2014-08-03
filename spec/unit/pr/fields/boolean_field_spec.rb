@@ -9,9 +9,9 @@ describe 'a boolean field' do
   describe "default value" do
     subject { klass.new }
 
-    its(:raw)     { should equal(false) }
-    its(:convert) { should equal(false) }
-    its(:options) { should == {} }
+    specify { expect(subject.raw).to equal(false) }
+    specify { expect(subject.convert).to equal(false) }
+    specify { expect(subject.options).to eq({}) }
   end
 
   describe '#options' do

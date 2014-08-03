@@ -5,13 +5,11 @@ describe 'accessing fields' do
   let(:lookup) { PR::Fields }
 
   describe 'finding fields via constant' do
-    subject { lookup }
-
-    its([:generic]) { should eq PR::Fields::GenericField }
-    its([:string])  { should eq PR::Fields::StringField }
-    its([:boolean]) { should eq PR::Fields::BooleanField }
-    its([:date])    { should eq PR::Fields::DateField }
-    its([:float])   { should eq PR::Fields::FloatField }
+    specify { expect(lookup[:generic]).to eq PR::Fields::GenericField }
+    specify { expect(lookup[:string]).to eq PR::Fields::StringField }
+    specify { expect(lookup[:boolean]).to eq PR::Fields::BooleanField }
+    specify { expect(lookup[:date]).to eq PR::Fields::DateField }
+    specify { expect(lookup[:float]).to eq PR::Fields::FloatField }
   end
 
   describe 'extending with custom fields' do

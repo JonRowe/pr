@@ -8,11 +8,9 @@ describe 'a date field' do
   let(:field)   { klass.new value, options }
 
   describe "default value" do
-    subject { klass.new }
-
-    its(:raw)     { should == '' }
-    specify       { expect { subject.convert }.to raise_error PR::Fields::InvalidValue }
-    its(:options) { should == {} }
+    specify { expect(klass.new.raw).to eq '' }
+    specify { expect { klass.new.convert }.to raise_error PR::Fields::InvalidValue }
+    specify { expect(klass.new.options).to eq({}) }
   end
 
   describe '#options' do

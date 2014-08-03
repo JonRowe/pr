@@ -8,9 +8,8 @@ describe 'a float field' do
   let(:field)   { klass.new value, options }
 
   describe "default value" do
-    subject       { klass.new }
-    its(:raw)     { should == '' }
-    its(:options) { should == {} }
+    specify { expect(klass.new.raw).to eq '' }
+    specify { expect(klass.new.options).to eq({}) }
   end
 
   describe '#options' do

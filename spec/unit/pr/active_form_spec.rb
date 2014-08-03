@@ -42,14 +42,14 @@ describe 'the PR Form' do
         expect(form_klass.model_name).to be_a ActiveModel::Name
       end
 
-      its(:to_model) { should eq form }
-      its(:to_partial_path) { should eq 'testforms/testform' }
+      specify { expect(subject.to_model).to eq form }
+      specify { expect(subject.to_partial_path).to eq 'testforms/testform' }
 
       describe 'when not persisted' do
 
-        its(:persisted?) { should be_false }
-        its(:to_key)     { should be_nil }
-        its(:to_param)   { should be_nil }
+        specify { expect(subject.persisted?).to be_false }
+        specify { expect(subject.to_key).to be_nil }
+        specify { expect(subject.to_param).to be_nil }
       end
 
       describe 'when persisted' do
@@ -57,9 +57,9 @@ describe 'the PR Form' do
           form.id = 100
         end
 
-        its(:persisted?) { should be_true  }
-        its(:to_key)     { should eq [:id] }
-        its(:to_param)   { should == "100" }
+        specify { expect(subject.persisted?).to be_true  }
+        specify { expect(subject.to_key).to eq [:id] }
+        specify { expect(subject.to_param).to eq "100" }
       end
     end
 
