@@ -11,12 +11,12 @@ describe 'building forms from models' do
   let(:builder)    { PR::BuildFromModel.new(registry, form) }
 
   it 'gets fields from the registry' do
-    registry.should_receive(:fields)
+    expect(registry).to receive(:fields)
     builder.build_from model
   end
 
   it 'populates the form values from the model when it has them' do
-    field_a.should_receive(:populate).with('a')
+    expect(field_a).to receive(:populate).with('a')
     builder.build_from model
   end
 

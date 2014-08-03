@@ -24,8 +24,8 @@ describe 'a boolean field' do
     let(:converted_value) { double "converted_value" }
 
     it "should return the converted value" do
-      field.should_receive(:convert).and_return(converted_value)
-      field.raw.should == converted_value
+      expect(field).to receive(:convert).and_return(converted_value)
+      expect(field.raw).to eq(converted_value)
     end
   end
 

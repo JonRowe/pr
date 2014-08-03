@@ -20,19 +20,19 @@ describe 'a string field' do
 
   describe "#populate" do
     subject { field.populate value }
-    specify { field.raw.should == value }
+    specify { expect(field.raw).to eq(value) }
   end
 
   describe :raw do
     it "should return the value the field was initialized with" do
-      field.raw.should == value
+      expect(field.raw).to eq(value)
     end
   end
 
   describe :convert do
     it "should return the string version of value" do
-      value.should_receive(:to_s).and_return "string value"
-      field.convert.should == "string value"
+      expect(value).to receive(:to_s).and_return "string value"
+      expect(field.convert).to eq("string value")
     end
   end
 end

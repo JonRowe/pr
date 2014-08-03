@@ -24,28 +24,28 @@ describe 'defining and registering fields' do
 
   describe 'using the macro' do
     it 'looks up the field registry for this form klass' do
-      PR::FieldRegistry.should_receive(:[]).with(form_klass).and_return(registry)
+      expect(PR::FieldRegistry).to receive(:[]).with(form_klass).and_return(registry)
       PR::DefineAndRegister[ form_klass, field_name, field_type ]
     end
 
     it 'looks up the the field for this type' do
-      PR::Fields.should_receive(:[]).with(field_type)
+      expect(PR::Fields).to receive(:[]).with(field_type)
       PR::DefineAndRegister[ form_klass, field_name, field_type ]
     end
 
     it 'defines a field on this form klass' do
-      PR::DefineField.should_receive(:[]).with( form_klass, field_name, field_klass, {} )
+      expect(PR::DefineField).to receive(:[]).with( form_klass, field_name, field_klass, {} )
       PR::DefineAndRegister[ form_klass, field_name, field_type ]
     end
 
     it 'registers this definition' do
-      registry.should_receive(:register).with(field_name,field)
+      expect(registry).to receive(:register).with(field_name,field)
       PR::DefineAndRegister[ form_klass, field_name, field_type ]
     end
 
     context 'with options' do
       it 'defines a field on this form klass' do
-        PR::DefineField.should_receive(:[]).with( form_klass, field_name, field_klass, options )
+        expect(PR::DefineField).to receive(:[]).with( form_klass, field_name, field_klass, options )
         PR::DefineAndRegister[ form_klass, field_name, field_type, options ]
       end
     end
@@ -55,12 +55,12 @@ describe 'defining and registering fields' do
     let(:definition) { PR::DefineAndRegister.new form_klass }
 
     it 'looks up the field registry for this form klass' do
-      PR::FieldRegistry.should_receive(:[]).with(form_klass).and_return(registry)
+      expect(PR::FieldRegistry).to receive(:[]).with(form_klass).and_return(registry)
       definition.register field_name, field
     end
 
     it 'registers this definition' do
-      registry.should_receive(:register).with(field_name,field)
+      expect(registry).to receive(:register).with(field_name,field)
       definition.register field_name, field
     end
   end
@@ -69,23 +69,23 @@ describe 'defining and registering fields' do
     let(:definition) { PR::DefineAndRegister.new form_klass }
 
     it 'looks up the field registry for this form klass' do
-      PR::FieldRegistry.should_receive(:[]).with(form_klass).and_return(registry)
+      expect(PR::FieldRegistry).to receive(:[]).with(form_klass).and_return(registry)
       definition.define field_name, field_type
     end
 
     it 'looks up the the field for this type' do
-      PR::Fields.should_receive(:[]).with(field_type)
+      expect(PR::Fields).to receive(:[]).with(field_type)
       definition.define field_name, field_type
     end
 
     it 'defines a field on this form klass' do
-      PR::DefineField.should_receive(:[]).with( form_klass, field_name, field_klass, {} )
+      expect(PR::DefineField).to receive(:[]).with( form_klass, field_name, field_klass, {} )
       definition.define field_name, field_type
     end
 
     context 'with options' do
       it 'defines a field on this form klass' do
-        PR::DefineField.should_receive(:[]).with( form_klass, field_name, field_klass, options )
+        expect(PR::DefineField).to receive(:[]).with( form_klass, field_name, field_klass, options )
         definition.define field_name, field_type, options
       end
     end

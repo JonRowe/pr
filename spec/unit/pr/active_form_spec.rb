@@ -15,11 +15,11 @@ describe 'the PR Form' do
     end
 
     it 'sets up field to define fields' do
-      PR::DefineAndRegister.should_receive(:[]).with form_klass, name, type, {}
+      expect(PR::DefineAndRegister).to receive(:[]).with form_klass, name, type, {}
       form_klass.field name, type
     end
     it 'sets up field to define fields and passes in options' do
-      PR::DefineAndRegister.should_receive(:[]).with form_klass, name, type, my: :option
+      expect(PR::DefineAndRegister).to receive(:[]).with form_klass, name, type, my: :option
       form_klass.field name, type, my: :option
     end
 
@@ -33,9 +33,9 @@ describe 'the PR Form' do
       let(:form) { form_klass.new }
       subject    { form }
 
-      it { should respond_to :id }
-      it { should respond_to :valid? }
-      it { should respond_to :errors }
+      it { is_expected.to respond_to :id }
+      it { is_expected.to respond_to :valid? }
+      it { is_expected.to respond_to :errors }
 
       it 'has a model name' do
         expect(form_klass.model_name).to eq "TestForm"
@@ -66,12 +66,12 @@ describe 'the PR Form' do
     describe 'and responds to ActiveModel errors' do
       let(:errors) { double }
       let(:form)   { form_klass.new }
-      before { ActiveModel::Errors.stub(:new).and_return(errors) }
+      before { allow(ActiveModel::Errors).to receive(:new).and_return(errors) }
 
       subject { form.errors }
 
       it 'creates active model errors with itself' do
-        ActiveModel::Errors.should_receive(:new).with form
+        expect(ActiveModel::Errors).to receive(:new).with form
         form.errors
       end
       it 'returns the errors object' do

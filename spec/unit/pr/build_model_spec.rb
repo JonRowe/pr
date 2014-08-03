@@ -11,12 +11,12 @@ describe 'building a model from a form' do
   let(:builder)  { PR::BuildModel.new registry }
 
   it 'gets the fields' do
-    registry.should_receive(:fields)
+    expect(registry).to receive(:fields)
     builder.for form, model
   end
   it 'converts fields to values' do
-    field_a.should_receive(:convert)
-    field_b.should_receive(:convert)
+    expect(field_a).to receive(:convert)
+    expect(field_b).to receive(:convert)
     builder.for form, model
   end
   it 'iterated over the fields and sets values' do

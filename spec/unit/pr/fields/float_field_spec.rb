@@ -30,7 +30,7 @@ describe 'a float field' do
 
     subject { field.populate value }
 
-    specify { subject; field.raw.should == "3.141" }
+    specify { subject; expect(field.raw).to eq("3.141") }
   end
 
   describe "#convert" do
@@ -39,7 +39,7 @@ describe 'a float field' do
       let(:value) { "3.4" }
 
       it "should return the float intepretation" do
-        field.convert.should == 3.4
+        expect(field.convert).to eq(3.4)
       end
     end
 

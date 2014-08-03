@@ -20,18 +20,18 @@ describe 'a generic field' do
 
   describe :raw do
     it "should return the value the field was initialized with" do
-      field.raw.should == value
+      expect(field.raw).to eq(value)
     end
   end
 
   describe "#populate" do
     subject { field.populate value }
-    specify { field.raw.should == value }
+    specify { expect(field.raw).to eq(value) }
   end
 
   describe :convert do
     it "should return the raw value" do
-      field.convert.should == value
+      expect(field.convert).to eq(value)
     end
   end
 end

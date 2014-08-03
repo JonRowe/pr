@@ -21,7 +21,7 @@ describe 'a date field' do
 
   describe "raw" do
     it "returns the value the field was initialized with" do
-      field.raw.should == value
+      expect(field.raw).to eq(value)
     end
   end
 
@@ -29,19 +29,19 @@ describe 'a date field' do
     let(:value) { Date.civil 2011, 6, 1 }
 
     subject { field.populate value }
-    specify { subject; field.raw.should == '01/06/2011' }
+    specify { subject; expect(field.raw).to eq('01/06/2011') }
   end
 
   describe "convert" do
 
     it "should attempt to parse the value as a uk formatted date" do
-      Date.should_receive(:strptime).with(value,'%d/%m/%Y')
+      expect(Date).to receive(:strptime).with(value,'%d/%m/%Y')
       field.convert
     end
 
     context "where value is not a valid date" do
       it "should raise an InvalidFieldValueError" do
-        Date.should_receive(:strptime).and_raise(ArgumentError)
+        expect(Date).to receive(:strptime).and_raise(ArgumentError)
         expect { field.convert }.to raise_error PR::Fields::InvalidValue
       end
     end
