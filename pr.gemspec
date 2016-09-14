@@ -18,6 +18,7 @@ Gem::Specification.new do |s|
 
   if RUBY_VERSION < '1.9.3'
     s.add_development_dependency 'rake', '< 11'
+    s.add_development_dependency 'i18n', '< 0.7.0'
   else
     s.add_development_dependency 'rake'
   end
