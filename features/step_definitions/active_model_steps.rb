@@ -14,7 +14,7 @@ rescue LoadError
   # old and busted then
   require 'test/unit'
 end
-require '#{ File.expand_path "../../../" + dirs.join('/'), __FILE__ }/my_form'
+require '#{ expand_path './my_form' }'
 
 base_class =
   if defined?(::Test)
