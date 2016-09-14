@@ -20,11 +20,12 @@ Gem::Specification.new do |s|
     s.add_development_dependency 'rake', '< 11'
     s.add_development_dependency 'i18n', '< 0.7.0'
     s.add_development_dependency 'gherkin', '< 3.2'
+    s.add_development_dependency 'cucumber', '< 2'
   else
     s.add_development_dependency 'rake'
+    s.add_development_dependency 'cucumber'
   end
   s.add_development_dependency 'rspec'
-  s.add_development_dependency 'cucumber'
   s.add_development_dependency 'aruba'
   if RUBY_VERSION < '2.2.2'
     s.add_development_dependency 'activemodel', '< 5'
