@@ -1,2 +1,3 @@
 require 'aruba/cucumber'
-require 'aruba/jruby'
+require 'rspec/support/ruby_features'
+require 'aruba/jruby' if RSpec::Support::Ruby.jruby?
