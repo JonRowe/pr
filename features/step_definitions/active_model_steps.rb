@@ -32,9 +32,9 @@ class TestActiveModelCompliance < base_class
 
 end
 TEST
-  run_simple 'ruby -Itest test_active_model_compliance.rb', true, 5
+  run_command 'ruby -Itest test_active_model_compliance.rb'
 end
 
 Then "it should pass" do
-  assert_partial_output '0 failures', all_output
+  expect(all_stdout).to match a_string_including '0 failures'
 end
