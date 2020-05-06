@@ -15,28 +15,15 @@ Gem::Specification.new do |s|
   s.test_files    = `git ls-files -- {spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
+  s.required_ruby_version = ">= 2.3"
 
-  if RUBY_VERSION < '1.9.3'
-    s.add_development_dependency 'rake', '< 11'
-    s.add_development_dependency 'i18n', '< 0.7.0'
-    s.add_development_dependency 'gherkin', '< 3.2'
-    s.add_development_dependency 'cucumber', '< 2'
-  elsif RUBY_VERSION.to_f < 2.3
-    s.add_development_dependency 'cucumber', '< 2'
-    s.add_development_dependency 'rake', '< 12'
-  else
-    s.add_development_dependency 'cucumber'
-    s.add_development_dependency 'rake', '> 13'
-  end
+  s.add_development_dependency 'cucumber'
+  s.add_development_dependency 'rake', '> 13'
 
   s.add_development_dependency 'rspec'
   s.add_development_dependency 'aruba'
 
-  if RUBY_VERSION < '2.2.2'
-    s.add_development_dependency 'activemodel', '< 5'
-  else
-    s.add_development_dependency 'activemodel', '> 5'
-    # Only because Github flags dependency security warnings
-    s.add_development_dependency 'activesupport', '> 5'
-  end
+  s.add_development_dependency 'activemodel', '> 5'
+  # Only because Github flags dependency security warnings
+  s.add_development_dependency 'activesupport', '> 5'
 end
