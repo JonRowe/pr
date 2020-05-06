@@ -26,7 +26,7 @@ Gem::Specification.new do |s|
     s.add_development_dependency 'rake', '< 12'
   else
     s.add_development_dependency 'cucumber'
-    s.add_development_dependency 'rake'
+    s.add_development_dependency 'rake', '> 13'
   end
 
   s.add_development_dependency 'rspec'
@@ -35,6 +35,6 @@ Gem::Specification.new do |s|
   if RUBY_VERSION < '2.2.2'
     s.add_development_dependency 'activemodel', '< 5'
   else
-    s.add_development_dependency 'activemodel'
+    s.add_development_dependency 'activemodel', '> 5'
   end
 end
