@@ -36,5 +36,7 @@ Gem::Specification.new do |s|
     s.add_development_dependency 'activemodel', '< 5'
   else
     s.add_development_dependency 'activemodel', '> 5'
+    # Only because Github flags dependency security warnings
+    s.add_development_dependency 'activesupport', '> 5'
   end
 end
